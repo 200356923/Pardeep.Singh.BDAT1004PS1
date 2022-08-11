@@ -34,7 +34,7 @@ amzn_data = aapl_response.json()
 
 ## Databse connection 
 
-conn = 'mysql+pymysql://c348ns1wkq3sg90k:ym7vv5za2ihd0jym@x71wqc4m22j8e3ql.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/u5bt557nrgzsm40e'
+conn = 'input your sql database here'
 
 engine = create_engine(conn)
 engine.connect()
