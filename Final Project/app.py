@@ -26,7 +26,7 @@ engine.connect()
 def index():
     ## configuring apple data 
     aapl_data = engine.execute("""
-        select * from stocks where symbol = 'aapl' order by date desc;
+        select distinct * from stocks where symbol = 'aapl' order by date desc;
         """)
     aapl_dataframe = pd.DataFrame(aapl_data,columns=['date','symbol','open','high','low','close','volume'])
     aapl_graph = px.line(aapl_dataframe,x ='date',y= aapl_dataframe.columns[2:6], title='Apple Stocks')
@@ -34,7 +34,7 @@ def index():
 
     ## configuring MICROSOFT data
     msft_data = engine.execute("""
-        select * from stocks where symbol = 'msft' order by date desc;
+        select distinct * from stocks where symbol = 'msft' order by date desc;
         """)
     msft_dataframe = pd.DataFrame(msft_data,columns=['date','symbol','open','high','low','close','volume'])
     msft_graph = px.line(msft_dataframe,x ='date',y= msft_dataframe.columns[2:6], title='Microsoft Stocks')
@@ -42,7 +42,7 @@ def index():
 
     ## configuring GOOGLE data
     goog_data = engine.execute("""
-        select * from stocks where symbol = 'goog' order by date desc;
+        select distinct * from stocks where symbol = 'goog' order by date desc;
         """)
     goog_dataframe = pd.DataFrame(goog_data,columns=['date','symbol','open','high','low','close','volume'])
     goog_graph = px.line(goog_dataframe,x ='date',y= goog_dataframe.columns[2:6], title='Google Stocks')
@@ -50,7 +50,7 @@ def index():
 
     ## configuring TESLA data
     tsla_data = engine.execute("""
-        select * from stocks where symbol = 'tsla' order by date desc;
+        select distinct * from stocks where symbol = 'tsla' order by date desc;
         """)
     tsla_dataframe = pd.DataFrame(tsla_data,columns=['date','symbol','open','high','low','close','volume'])
     tsla_graph = px.line(tsla_dataframe,x ='date',y= tsla_dataframe.columns[2:6], title='Tesla Stocks')
@@ -59,7 +59,7 @@ def index():
     ## configuring AMAZON data
 
     amzn_data = engine.execute("""
-        select * from stocks where symbol = 'amzn' order by date desc;
+        select distinct * from stocks where symbol = 'amzn' order by date desc;
         """)
     amzn_dataframe = pd.DataFrame(amzn_data,columns=['date','symbol','open','high','low','close','volume'])
     amzn_graph = px.line(amzn_dataframe,x ='date',y= amzn_dataframe.columns[2:6], title='Amazon Stocks')
@@ -76,13 +76,13 @@ def index():
 def aapl():
     ## configuring apple data 
     aapl_data = engine.execute("""
-        select * from stocks where symbol = 'aapl' order by date desc;
+        select distinct * from stocks where symbol = 'aapl' order by date desc;
         """)
     aapl_dataframe = pd.DataFrame(aapl_data,columns=['date','symbol','open','high','low','close','volume'])
     aapl_graph = px.line(aapl_dataframe,x ='date',y= aapl_dataframe.columns[2:6], title='Apple Stocks')
     graph1JSON = json.dumps(aapl_graph, cls = plotly.utils.PlotlyJSONEncoder)
     aapl_data = engine.execute("""
-        select * from stocks where symbol = 'aapl' order by date desc;
+        select distinct * from stocks where symbol = 'aapl' order by date desc;
         """)
     data = tuple(aapl_data.all())
     return render_template('aapl.html', graph1JSON = graph1JSON, data = data)
@@ -95,13 +95,13 @@ def aapl():
 def msft():
     ## configuring apple data 
     msft_data = engine.execute("""
-        select * from stocks where symbol = 'msft' order by date desc;
+        select distinct * from stocks where symbol = 'msft' order by date desc;
         """)
     msft_dataframe = pd.DataFrame(msft_data,columns=['date','symbol','open','high','low','close','volume'])
     msft_graph = px.line(msft_dataframe,x ='date',y= msft_dataframe.columns[2:6], title='Microsoft Stocks')
     graph1JSON = json.dumps(msft_graph, cls = plotly.utils.PlotlyJSONEncoder)
     msft_data = engine.execute("""
-        select * from stocks where symbol = 'msft' order by date desc;
+        select distinct * from stocks where symbol = 'msft' order by date desc;
         """)
     data = tuple(msft_data.all())
     return render_template('msft.html', graph1JSON = graph1JSON, data = data)
@@ -112,13 +112,13 @@ def msft():
 def goog():
     ## configuring apple data 
     goog_data = engine.execute("""
-        select * from stocks where symbol = 'goog' order by date desc;
+        select distinct * from stocks where symbol = 'goog' order by date desc;
         """)
     goog_dataframe = pd.DataFrame(goog_data,columns=['date','symbol','open','high','low','close','volume'])
     goog_graph = px.line(goog_dataframe,x ='date',y= goog_dataframe.columns[2:6], title='Google Stocks')
     graph1JSON = json.dumps(goog_graph, cls = plotly.utils.PlotlyJSONEncoder)
     goog_data = engine.execute("""
-        select * from stocks where symbol = 'goog' order by date desc;
+        select distinct * from stocks where symbol = 'goog' order by date desc;
         """)
     data = tuple(goog_data.all())
     return render_template('goog.html', graph1JSON = graph1JSON, data = data)
@@ -129,13 +129,13 @@ def goog():
 def tsla():
     ## configuring apple data 
     tsla_data = engine.execute("""
-        select * from stocks where symbol = 'tsla' order by date desc;
+        select distinct * from stocks where symbol = 'tsla' order by date desc;
         """)
     tsla_dataframe = pd.DataFrame(tsla_data,columns=['date','symbol','open','high','low','close','volume'])
     tsla_graph = px.line(tsla_dataframe,x ='date',y= tsla_dataframe.columns[2:6], title='Tesla Stocks')
     graph1JSON = json.dumps(tsla_graph, cls = plotly.utils.PlotlyJSONEncoder)
     goog_data = engine.execute("""
-        select * from stocks where symbol = 'tsla' order by date desc;
+        select distinct * from stocks where symbol = 'tsla' order by date desc;
         """)
     data = tuple(goog_data.all())
     return render_template('tsla.html', graph1JSON = graph1JSON, data = data)
@@ -145,13 +145,13 @@ def tsla():
 def amzn():
     ## configuring apple data 
     amzn_data = engine.execute("""
-        select * from stocks where symbol = 'amzn' order by date desc;
+        select distinct * from stocks where symbol = 'amzn' order by date desc;
         """)
     amzn_dataframe = pd.DataFrame(amzn_data,columns=['date','symbol','open','high','low','close','volume'])
     amzn_graph = px.line(amzn_dataframe,x ='date',y= amzn_dataframe.columns[2:6], title='Amazon Stocks')
     graph1JSON = json.dumps(amzn_graph, cls = plotly.utils.PlotlyJSONEncoder)
     goog_data = engine.execute("""
-        select * from stocks where symbol = 'amzn' order by date desc;
+        select distinct * from stocks where symbol = 'amzn' order by date desc;
         """)
     data = tuple(goog_data.all())
     return render_template('amzn.html', graph1JSON = graph1JSON, data = data)
@@ -166,7 +166,7 @@ def amzn():
 @app.route("/api")
 def api():
     ## fetching data
-    info = engine.execute("SELECT * FROM stocks;").fetchall()
+    info = engine.execute("SELECT distinct * FROM stocks;").fetchall()
     api_data = []
     for data in info:
         api_data.append(
@@ -186,7 +186,7 @@ def api():
 @app.route("/api/<symbol>")
 def api_id(symbol):
     ## fetching data
-    info = engine.execute(f"SELECT * FROM stocks where symbol = '{symbol}' order by date desc;").fetchall()
+    info = engine.execute(f"SELECT distinct * FROM stocks where symbol = '{symbol}' order by date desc;").fetchall()
     api_data = []
     for data in info:
         api_data.append(
@@ -205,7 +205,7 @@ def api_id(symbol):
 
 @app.route("/<date>")
 def api_date(date):
-    info = engine.execute(f"SELECT * FROM stocks where date = '{date}'").fetchall()
+    info = engine.execute(f"SELECT distinct * FROM stocks where date = '{date}'").fetchall()
     api_data = []
     for data in info:
         api_data.append(
@@ -224,7 +224,7 @@ def api_date(date):
 
 @app.route("/<date>/<symbol>")
 def api_date_symbol(symbol,date):
-    info = engine.execute(f"SELECT * FROM stocks where date = '{date}' and symbol ='{symbol}' ").fetchall()
+    info = engine.execute(f"SELECT distinct * FROM stocks where date = '{date}' and symbol ='{symbol}' ").fetchall()
     api_data = []
     for data in info:
         api_data.append(
